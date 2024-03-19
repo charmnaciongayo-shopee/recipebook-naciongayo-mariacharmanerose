@@ -1,0 +1,14 @@
+{% extends 'ledger/base.html' %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <h2>Submitted by: {{ object.get_author }}</h2>
+        <h3>Ingredients</h3>
+        <ul>
+            {% for ingredient in object.ingredients.all %}
+            <li>{{ ingredient.quantity }} of {{ ingredient.ingredient.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <a href="{% url 'login' %}">LOGIN</a>
+    {% endif %}   
+{% endblock %}
