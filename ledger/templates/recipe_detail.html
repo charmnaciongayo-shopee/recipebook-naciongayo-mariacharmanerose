@@ -2,7 +2,7 @@
 {% block content %}
     {% if request.user.is_authenticated %}
         <h2>{{object.name}}</h2>
-        <h3>Submitted by: {{ object.get_author }}</h3>
+        <h3>Recipe submitted by: {{ object.get_author }}</h3>
         <h4>Ingredients</h4>
         <ul>
             {% for ingredient in object.ingredients.all %}
@@ -10,6 +10,6 @@
             {% endfor %}
         </ul>
     {% else %}
-        <a href="{% url 'login' %}">LOGIN</a>
+        <a href="{% url 'login' %}">Login</a>
     {% endif %}   
 {% endblock %}
