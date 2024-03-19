@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html style="padding: 12px;">
 <head>
     <title>Recipe Book</title>
 </head>
 <body>
     <header class="main-header">
-        <h1>Recipe Book</h1>
-        {% if request.user.is_authenticated %}
-        <form action="{% url 'logout' %}" method="POST">
-            {% csrf_token %}
-            <button type="submit">LOGOUT</button>
-        </form>
-    {% else %}
-        <form action = "{% url 'logout' %}" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Login</button>
-        </form>
-    {% endif %}
+
+        <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+            <h1>Recipe Book</h1>
+            {% if request.user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            {% else %}
+                <form action = "{% url 'logout' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Login</button>
+                </form>
+            {% endif %}
+        
+        </div>
     </header>
     
     <main>

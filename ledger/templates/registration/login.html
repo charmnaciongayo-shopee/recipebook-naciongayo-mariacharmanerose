@@ -1,20 +1,22 @@
-<html>
+<html style="padding: 12px;">
     <head>
-        <h1>Recipe Book</h1>
+        <title>Recipe Book | Login</title>
     </head>
     <body>
+        <h1>Recipe Book</h1>
         {% if request.user.is_authenticated %}
             <h2>Logout Page</h2>
             <form action="{% url 'logout' %}" method="POST">
                 {% csrf_token %}
-                <button type="submit">LOGOUT</button>
+                <button type="submit">Logout</button>
             </form>
         {% else %}
             <h2>Login Page</h2>
             <form method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit">Login</button>
+                <a href="{% url 'password_reset' %}">Forgot password?</a>
+                <br><button type="submit">Login</button>
             </form>
         {% endif %}
     </body>
